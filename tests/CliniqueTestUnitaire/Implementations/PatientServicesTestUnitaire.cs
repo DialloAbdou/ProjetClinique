@@ -9,8 +9,12 @@ namespace CliniqueTestUnitaire.Implementations
     public class PatientServicesTestUnitaire
     {
 
+        [Fact]
         public void CreatePatient_Should_Be_Return_New_Patient()
         {
+            // Act
+
+            //Assertion
 
         }
     }
