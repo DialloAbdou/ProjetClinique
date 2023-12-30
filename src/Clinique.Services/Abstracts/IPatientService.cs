@@ -4,6 +4,7 @@ namespace Clinique.Services.Abstracts
 {
     public interface IPatientService
     {
-       Patient CreatePatient(Patient patient);
+        Patient AddPatient(Patient patient);
+        IEnumerable<Patient> GetAllPatients();
     }
 }

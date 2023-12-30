@@ -10,9 +10,23 @@ namespace Clinique.Services.Implementations
 {
     public class PatientService : IPatientService
     {
-        public Patient CreatePatient(Patient patient)
+        List<Patient> patients = new List<Patient>();
+
+        public Patient AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            if(patient is null) 
+                throw new ArgumentNullException("L'objet ne doit pas null",nameof(patient));
+            if(patients.Any(p=>p.Id == patient.Id))
+            {
+                throw new ArgumentException("Impossible d'ajouter un patient existant dans la base", nameof(patient));
+            }
+            patients.Add(patient);
+            return patient; 
+        }
+
+        public IEnumerable<Patient> GetAllPatients()
+        {
+            return patients.AsEnumerable();
         }
     }
 }
