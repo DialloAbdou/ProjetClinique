@@ -10,5 +10,7 @@ namespace Clinique.Data.Abstractions
     public interface IPatientRepository
     {
        IEnumerable<Patient> GetPatientAll();
+
+       Patient AddPatient(Patient patient);
     }
 }
