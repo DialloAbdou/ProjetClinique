@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Clinique.Data.Abstractions
 {
-    public interface IPatientRepository
-    {
-       IEnumerable<Patient> GetPatientAll();
+    public interface IPatientRepository : IRepository<Patient>
+    { 
+        Task<bool>IsExitedPatient(Patient patient);
 
-       Patient AddPatient(Patient patient);
     }
 }

@@ -17,25 +17,37 @@ namespace Clinique.Services.Implementations
             _patientRepository = patientRepository;
         }
 
-        public Patient AddPatient(Patient patient)
+        public async Task<Patient> AddPatientAsync(Patient patient)
         {
-            if(patient is null)
-            {
-                throw new ArgumentNullException("L'objet ne doit pas null",nameof(patient));
 
-            }
-            if(GetAllPatients().Any(p=>p.Id == patient.Id))
-            {
-                   throw new ArgumentException("Impossible d'ajouter un patient existant dans la base", nameof(patient));
-
-            }
-            _patientRepository.AddPatient(patient);
-            return patient; 
+            await _patientRepository.AddAsync(patient);
+            return patient;
         }
 
-        public IEnumerable<Patient> GetAllPatients()
+        public async Task<IEnumerable<Patient>> GetAllPatientAsync()
         {
-            return _patientRepository.GetPatientAll();
+            return await _patientRepository.GetAllAsync();
         }
+
+        //public Async Patient AddPatientAsync (Patient patient)
+        //{
+        //    if(patient is null)
+        //    {
+        //        throw new ArgumentNullException("L'objet ne doit pas null",nameof(patient));
+
+        //    }
+        //    if(GetAllPatientAsync().Any(p=>p.Id == patient.Id))
+        //    {
+        //           throw new ArgumentException("Impossible d'ajouter un patient existant dans la base", nameof(patient));
+
+        //    }
+        //    _patientRepository.AddAsync(patient);
+        //    return patient; 
+        //}
+
+        //public IEnumerable<Patient> GetAllPatientAsync()
+        //{
+        //    return _patientRepository
+        //}
     }
 }

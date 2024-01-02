@@ -4,7 +4,7 @@ namespace Clinique.Services.Abstracts
 {
     public interface IPatientService
     {
-        Patient AddPatient(Patient patient);
-        IEnumerable<Patient> GetAllPatients();
+       Task<Patient> AddPatientAsync(Patient patient);
+        Task<IEnumerable<Patient>> GetAllPatientAsync();
     }
 }
