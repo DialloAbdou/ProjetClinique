@@ -11,5 +11,6 @@ namespace Clinique.Data.Abstractions
         Task<IEnumerable<T>> GetAllAsync();
 
         Task<T> AddAsync(T person);
+        
     }
 }
