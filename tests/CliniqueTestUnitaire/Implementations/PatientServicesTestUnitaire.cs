@@ -87,9 +87,6 @@ namespace CliniqueTestUnitaire.Implementations
             patient!.Nom.Should().Be(patient.Nom);
             patient!.Adresse.Should().Be(patient.Adresse);
             patient!.Age.Should().Be(patient.Age);
-
-
-
         }
     }
 }
