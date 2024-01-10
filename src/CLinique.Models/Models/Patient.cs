@@ -8,5 +8,6 @@ namespace CLinique.Models.Models
 {
     public class Patient :Personne
     {
+        public string? NomPatologie { get; set; } 
     }
 }

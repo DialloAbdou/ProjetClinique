@@ -9,17 +9,9 @@ using System.Threading.Tasks;
 
 namespace Clinique.Services.Implementations
 {
-    public class MedecinService : IMedecinService
+    public class MedecinService 
     {
-        IMedecinRepository _medecinRepository;
-        public MedecinService(IMedecinRepository medecinRepository)
-        {
-            _medecinRepository = medecinRepository;
-        }
-        public async Task<Medecin> AddMedecinAsync(Medecin medecin)
-        {
-            await _medecinRepository.AddAsync(medecin);
-            return medecin;
-        }
+     
+      
     }
 }

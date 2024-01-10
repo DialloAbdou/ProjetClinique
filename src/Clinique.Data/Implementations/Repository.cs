@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +30,17 @@ namespace Clinique.Data.Implementations
             return person;
            
         }
+
+        public async Task<bool> IsExisted(T person)
+        {
+            return await dbContext.Set<T>().AnyAsync();
+        }
+
+        public async Task<bool> IsExistedAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await dbContext.Set<T>().AnyAsync(predicate);
+        }
+
        
     }
 }

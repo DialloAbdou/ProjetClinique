@@ -6,29 +6,20 @@ namespace Clinique.Services.Implementations
 {
     public class PatientService : IPatientService
     {
-        private IPatientRepository _patientRepository;
-        public PatientService( IPatientRepository  patientRepository ) 
+        private List<Patient> _listePatients = new  List<Patient>();
+        /// <summary>
+        /// elle permet d'ajouter
+        /// un patient dans la sa base de données 
+        /// </summary>
+        /// <param name="patient"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void AddMissionPatient(Patient patient, string nomPathologie)
         {
-            _patientRepository = patientRepository;
+            patient.NomPatologie = nomPathologie;
+           _listePatients.Add(patient);
         }
 
-        public async Task<Patient> AddPatientAsync(Patient patient)
-        {
-           await _patientRepository.AddAsync(patient);
-            return patient;
-        }
-
-        public async Task<IEnumerable<Patient>> GetAllPatientAsync()
-        {
-            return await _patientRepository.GetAllAsync();
-        }
-
-        public async Task<bool> IsExistePatient(Patient patient)
-        {
-            return await _patientRepository.IsExitedPatient(patient);
-
-        }
-
-     
+        public IEnumerable<Patient> GetAllPatients()
+         =>_listePatients.AsEnumerable();
     }
 }

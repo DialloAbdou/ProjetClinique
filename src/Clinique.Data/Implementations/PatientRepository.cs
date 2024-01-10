@@ -12,18 +12,6 @@ namespace Clinique.Data.Implementations
 
         private CliniqueDbContext ClinqieDbContext => dbContext as CliniqueDbContext;
 
-        public async Task<bool> IsExitedPatient(Patient patient)
-        {
-            var p = await ClinqieDbContext.Patients.FirstOrDefaultAsync(p => p.Id == patient.Id);
-
-            if (p != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+      
     }
 }
