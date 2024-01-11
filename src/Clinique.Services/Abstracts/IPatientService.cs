@@ -6,6 +6,7 @@ namespace Clinique.Services.Abstracts
     {
         void AddMissionPatient(Patient patient, string nomPathologie);
         IEnumerable<Patient> GetAllPatients();
+        bool isAdmission(List<Patient> patients);
 
     }
 }
