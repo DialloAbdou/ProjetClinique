@@ -4,7 +4,7 @@ namespace Clinique.Services.Abstracts
 {
     public interface IMedecinService
     {
-
-  
+        void AddMedecin(Medecin medecin);
+        IEnumerable<Medecin> GetAllMedecin();
     }
 }

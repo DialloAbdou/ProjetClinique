@@ -9,9 +9,16 @@ using System.Threading.Tasks;
 
 namespace Clinique.Services.Implementations
 {
-    public class MedecinService 
+    public class MedecinService:IMedecinService
     {
-     
-      
+        private  List<Medecin> medecinList = new List<Medecin>();
+        public void AddMedecin(Medecin medecin)
+        {
+            medecinList.Add(medecin);
+        }
+        public IEnumerable<Medecin> GetAllMedecin()
+        {
+           return  medecinList.AsEnumerable();
+        }
     }
 }

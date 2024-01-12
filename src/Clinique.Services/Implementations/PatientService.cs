@@ -7,7 +7,7 @@ namespace Clinique.Services.Implementations
     public class PatientService : IPatientService
     {
         private List<Patient> _listePatients = new List<Patient>();
-        const int Max = 10;
+        const int Max = 5;
         /// <summary>
         /// elle permet d'ajouter
         /// un patient dans la sa base de données 
@@ -16,9 +16,9 @@ namespace Clinique.Services.Implementations
         /// <exception cref="NotImplementedException"></exception>
         public void AddMissionPatient(Patient patient, string nomPathologie)
         {
+            if (!isAdmission(_listePatients))
+                return; 
             patient.NomPatologie = nomPathologie;
-            if (_listePatients.Count()> Max)
-               throw new ArgumentOutOfRangeException(nameof(Max));
             _listePatients.Add(patient);
          
          
@@ -30,13 +30,7 @@ namespace Clinique.Services.Implementations
 
         public bool isAdmission(List<Patient> patients)
         {
-            throw new NotImplementedException();
+           return patients.Count() <= Max;
         }
     }
 }
-
-
-//{
-//    int max = _listePatients.Count();
-//    throw new ArgumentOutOfRangeException(nameof(max), "le nombre d'ambition doit être inferieur ou egal à 10");
-//}
