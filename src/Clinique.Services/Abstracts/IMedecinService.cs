@@ -6,5 +6,6 @@ namespace Clinique.Services.Abstracts
     {
         void AddMedecin(Medecin medecin);
         IEnumerable<Medecin> GetAllMedecin();
+        void Affecter(Medecin medecin, Patient patient); 
     }
 }

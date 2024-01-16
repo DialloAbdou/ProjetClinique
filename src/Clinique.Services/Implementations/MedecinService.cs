@@ -16,6 +16,12 @@ namespace Clinique.Services.Implementations
         {
             medecinList.Add(medecin);
         }
+
+        public void Affecter(Medecin medecin, Patient patient)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Medecin> GetAllMedecin()
         {
            return  medecinList.AsEnumerable();
