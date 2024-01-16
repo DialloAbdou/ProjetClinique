@@ -26,5 +26,10 @@ namespace Clinique.Services.Implementations
         {
            return  medecinList.AsEnumerable();
         }
+
+        public bool isExistMedecin(Medecin medecin)
+        {
+            return!medecinList.Any(m=>m.Id == medecin.Id);
+        }
     }
 }

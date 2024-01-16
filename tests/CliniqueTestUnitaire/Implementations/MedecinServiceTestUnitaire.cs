@@ -20,6 +20,8 @@ namespace CliniqueTestUnitaire.Implementations
         private MedecinService _medecinService;
 
         private IEnumerable<Medecin> _ListeMedecins = new List<Medecin>();
+        private Mock<IRepository<Medecin>> __MockRepoMedecin = new Mock<IRepository<Medecin>>();
+
         public MedecinServiceTestUnitaire()
         {
             _medecinService = new MedecinService();
@@ -30,7 +32,7 @@ namespace CliniqueTestUnitaire.Implementations
         {
             // Arrange
             // Action
-             var result = _medecinService.GetAllMedecin();
+            var result = _medecinService.GetAllMedecin();
             result.Should().BeEmpty();
         }
 
@@ -41,7 +43,7 @@ namespace CliniqueTestUnitaire.Implementations
             // Arrange
             Medecin medecin = new Medecin()
             {
-                Id =1,
+                Id = 1,
                 Nom = "medecin1",
                 Prenom = "medecinPre",
                 Adresse = "AdresseMed",
@@ -54,5 +56,25 @@ namespace CliniqueTestUnitaire.Implementations
 
             result.Should().NotBeNullOrEmpty();
         }
+
+        [Fact]
+        public void IsMedecin_should_Be_Return_True_When_Medecin_Existed_In_Collection()
+        {
+            //Arrange
+            Medecin medecin = new Medecin()
+            {
+                Id = 1,
+                Nom = "medecin1",
+                Prenom = "medecinPre",
+                Adresse = "AdresseMed",
+                Age = 25
+            };
+            var result = _medecinService.isExistMedecin(medecin);
+            // Verifer si le medecin existe dans notre base de données 
+            result.Should().BeTrue();
+        }
+
+
+
     }
 }
