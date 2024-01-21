@@ -18,13 +18,31 @@ namespace CliniqueTestUnitaire.Implementations
     public class MedecinServiceTestUnitaire
     {
         private MedecinService _medecinService;
-
+        private PatientService _patientService;
         private IEnumerable<Medecin> _ListeMedecins = new List<Medecin>();
-        private Mock<IRepository<Medecin>> __MockRepoMedecin = new Mock<IRepository<Medecin>>();
+        private Medecin medecin = new()
+        {
+            Id = 1,
+            Nom = "medecin1",
+            Prenom = "medecinPre",
+            Adresse = "AdresseMed",
+            Age = 25
 
+        };
+
+        private Patient patient = new()
+        {
+            Id = 1,
+            Nom = "Nompatient",
+            Prenom = "PrePatient",
+            Adresse = "Adresse1",
+            Age = 35
+
+        };
         public MedecinServiceTestUnitaire()
         {
             _medecinService = new MedecinService();
+            _patientService = new PatientService();
         }
 
         [Fact]
@@ -41,17 +59,8 @@ namespace CliniqueTestUnitaire.Implementations
         public void GetAllMedecin_should_Be_Return_At_Beginin()
         {
             // Arrange
-            Medecin medecin = new Medecin()
-            {
-                Id = 1,
-                Nom = "medecin1",
-                Prenom = "medecinPre",
-                Adresse = "AdresseMed",
-                Age = 25
-            };
             // Act 
             _medecinService.AddMedecin(medecin);
-
             var result = _medecinService.GetAllMedecin();
 
             result.Should().NotBeNullOrEmpty();
@@ -60,21 +69,28 @@ namespace CliniqueTestUnitaire.Implementations
         [Fact]
         public void IsMedecin_should_Be_Return_True_When_Medecin_Existed_In_Collection()
         {
-            //Arrange
-            Medecin medecin = new Medecin()
-            {
-                Id = 1,
-                Nom = "medecin1",
-                Prenom = "medecinPre",
-                Adresse = "AdresseMed",
-                Age = 25
-            };
+            _medecinService.AddMedecin(medecin);
             var result = _medecinService.isExistMedecin(medecin);
             // Verifer si le medecin existe dans notre base de données 
             result.Should().BeTrue();
         }
 
 
+        [Fact]
+        public void AffectationApatient_should_Be_AAdd__In_Collection_when_Medecin_IsExisted()
+        {
+            // Arrange
+            //-- verifier si le médecin exist
+            _medecinService.AddMedecin(medecin);
+            _medecinService.isExistMedecin(medecin).Should().BeTrue();
+          ///  _patientService.AddMissionPatient(patient, "NomPathologie");
+            //// Act
+            //_medecinService.Affecter(medecin, patient);
+   
+            //asser
+         
+        }
 
+    
     }
 }

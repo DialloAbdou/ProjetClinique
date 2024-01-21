@@ -8,5 +8,6 @@ namespace Clinique.Services.Abstracts
         IEnumerable<Medecin> GetAllMedecin();
         void Affecter(Medecin medecin, Patient patient);
         bool isExistMedecin(Medecin medecin);
+   
     }
 }

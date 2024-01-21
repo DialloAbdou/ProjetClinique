@@ -12,6 +12,19 @@ namespace Clinique.Data.Implementations
 
         private CliniqueDbContext ClinqieDbContext => dbContext as CliniqueDbContext;
 
-      
+        public Task AddMissionPatientAsync(Patient patient, string nomPathologie)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Patient>> GetAllPatientAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> isAdmission(List<Patient> patients)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
