@@ -6,5 +6,7 @@ namespace Clinique.Services.Abstracts
     {
         void AddPatient(Patient patient);
         IEnumerable<Patient> GetAllPatients();
+        bool IsNotExistPatient(Patient patient);
+
     }
 }
