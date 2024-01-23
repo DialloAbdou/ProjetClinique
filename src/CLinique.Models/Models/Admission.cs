@@ -8,9 +8,10 @@ namespace CLinique.Models.Models
 {
     public class Admission
     {
-        Patient Patient { get; set; } = default!;
-        public string NomPathologie { get; set; }=string.Empty;
+        public Patient Patient { get; set; } = default!;
+        public string NomPathologie { get; set; } = string.Empty;
         public DateTime DebutAdmission { get; set; }
-        public DateTime ?FinAdmission { get; set; }
+        public DateTime? FinAdmission { get; set; }
+
     }
 }
