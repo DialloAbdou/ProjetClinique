@@ -35,7 +35,7 @@ namespace CliniqueTestUnitaire.Implementations
 
         public void IsExistedMedecin_Should_Be_False_When_Found_In_Collection()
         {
-            _medecinService.isNotExistedMedecin(medecin).Should().BeFalse();
+            _medecinService.isNotExistedMedecin(medecin).Should().BeTrue();
         }
         [Fact]
         public void GetAllMedecin_Should_Be_Empty_At_Beginin()

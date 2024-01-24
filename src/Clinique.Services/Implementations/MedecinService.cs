@@ -34,7 +34,5 @@ namespace Clinique.Services.Implementations
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
