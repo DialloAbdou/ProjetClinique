@@ -32,10 +32,11 @@ namespace Clinique.Services.Implementations
                                             Nom = patient.Nom,
                                             Prenom = patient.Prenom,
                                             Adresse = patient.Adresse,
-                                            Age = patient.Age
+                                            Age = patient.Age,
+                                            NomPathologie = patient.NomPathologie,
                                         },
-                                        DebutAdmission = DateTime.Now,
-                                        NomPathologie = nomPathologie
+                                        DebutAdmission = DateTime.Now
+
                                     });
             }
         }

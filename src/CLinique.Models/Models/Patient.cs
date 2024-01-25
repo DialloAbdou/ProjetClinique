@@ -9,6 +9,7 @@ namespace CLinique.Models.Models
     public class Patient :Personne
     {
         public string? NomPathologie { get; set; } 
-        public Medecin ? Medecin { get; set; }
+        public virtual Medecin ? Medecin { get; set; }
+        
     }
 }

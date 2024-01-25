@@ -22,6 +22,15 @@ namespace CliniqueTestUnitaire.Implementations
              Age= 15
 
         };
+        private Medecin medecin2 = new Medecin()
+        {
+            Id = 2,
+            Nom = "NomMedecin2",
+            Prenom = "PreMedecin2",
+            Adresse = "AdresseMedecin2",
+            Age = 25
+
+        };
 
         private Patient patient = new Patient()
         {
@@ -49,7 +58,20 @@ namespace CliniqueTestUnitaire.Implementations
         {
             _affectaionService.IsMedecinExisted(medecin).Should().BeTrue();
         }
+   
+   
+        [Fact]
+        public void IsMedecinAffected_Should_Be_Return_True_When_Medecin_found_In_Collection()
+        {
+            _affectaionService.MedecinIsAffected(medecin).Should().BeTrue();
+        }
 
+        [Fact]
+        public void IsMedecinAffected_Should_Be_Return_False_When_Medecin_found_In_Collection()
+        {
+            //Arrange
+            _affectaionService.MedecinIsAffected(medecin2).Should().BeFalse();
+        }
         [Fact]
         public void GetAllAffection_Should_Be_Return_Current_Collection()
         {

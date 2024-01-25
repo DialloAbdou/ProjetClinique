@@ -12,6 +12,7 @@ namespace Clinique.Services.Abstracts
         IEnumerable<Affectation> GetAllAffectations();
         void AddAffectation(Medecin medecin, Patient patient);
         bool IsMedecinExisted(Medecin medecin);
+        bool MedecinIsAffected(Medecin medecin); 
 
 
     }

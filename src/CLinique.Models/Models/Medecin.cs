@@ -8,7 +8,10 @@ namespace CLinique.Models.Models
 {
     public class Medecin:Personne
     {
-
+        public Medecin()
+        {
+            Patients = new List<Patient>();
+        }
         public List<Patient> Patients { get; set; } = default!;
     }
 }

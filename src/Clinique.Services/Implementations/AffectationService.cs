@@ -21,11 +21,43 @@ namespace Clinique.Services.Implementations
 
         public void AddAffectation(Medecin medecin, Patient patient)
         {
-            throw new NotImplementedException();
-            
+           if(IsMedecinExisted(medecin))
+           {
+               if(MedecinIsAffected(medecin))
+                {
+                    Affectation affection = new Affectation
+                    {
+                        DateAffection = DateTime.Today,
+                         Patient = patient,
+                         medecin = medecin
+                    };
+                    Affectations.Add(affection);
+                }
+           }
         }
 
         public bool IsMedecinExisted(Medecin medecin)
-        =>ListMedecins.Any(m=>m.Id == medecin.Id);
+        => ListMedecins.Any(m => m.Id == medecin.Id);
+
+        public bool MedecinIsAffected(Medecin medecin)
+        {
+            var medecin1 = ListMedecins.FirstOrDefault(m => m.Id == medecin.Id);
+            if (medecin1 != null)
+            {
+                if (medecin.Patients.Count <= 6)
+                {
+                    return true;
+                }else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+
+                return false;
+            }
+
+        }
     }
 }
