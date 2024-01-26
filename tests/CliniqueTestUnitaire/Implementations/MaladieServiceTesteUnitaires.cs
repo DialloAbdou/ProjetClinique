@@ -50,7 +50,6 @@ namespace CliniqueTestUnitaire.Implementations
             var resmaladie = results.First();
             resmaladie.Id.Should().Be(maladie.Id);
             resmaladie.NomPahtologi.Should().Be(maladie.NomPahtologi);
-
         }
     }
 }
