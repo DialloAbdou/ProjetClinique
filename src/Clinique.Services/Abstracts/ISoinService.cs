@@ -11,5 +11,6 @@ namespace Clinique.Services.Abstracts
     {
         IEnumerable<Soin> GetAllSoins();
         void AddSoin(Soin soin);
+       
     }
 }
