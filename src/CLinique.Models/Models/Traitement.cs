@@ -10,9 +10,9 @@ namespace CLinique.Models.Models
     {
         public int Id { get; set; }
         public ICollection<Soin> Soins { get; set; }
-
+        public int MaladieId { get; set; }
         public Maladie Maladie { get; set; }
 
     }
 }
- 
+  
