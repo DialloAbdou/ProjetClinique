@@ -29,7 +29,10 @@ namespace CliniqueTestUnitaire.Implementations
         {
             Id = 1,
             Soins = new List<Soin> { new Soin { Id = 1, Tysoin = "soin1", Cout = 50, NbJour = 1 }, new Soin { Id = 2, Tysoin = "Soin2", Cout = 100, NbJour = 2 } },
+         
+            Maladie = new Maladie { Id = 1, NomPahtologi = "Scarlatine" },
             MaladieId = 1
+
 
         };
         public TraitementServiceTestUnitaires()
@@ -62,15 +65,24 @@ namespace CliniqueTestUnitaire.Implementations
         [Fact]
         public void IsTrouveTraitementPatient_Shoul_Be_ReturnTrue__When_Found_Traiement_In_Collection()
         {
-            _TraitementService.IsTrouveTraitementPatient(patient).Should().BeTrue();
+           var result =  _TraitementService.IsTrouveTraitementPatient(patient);
+            result.Should().BeTrue();
         }
 
         [Fact]
-        public void CoutTraitement_Shoul_Be_Return_Totat_Cost_Traitement_By_Patient()
+        public void CoutTraitementt_Shoul_Be_Return_Cout_Total_Traitement_ByPatient()
         {
-            _TraitementService.IsTrouveTraitementPatient(patient).Should().BeTrue();
+            _TraitementService.AddTraitement(traitement);
             var result = _TraitementService.CoutTraitement(patient);
             result.Should().Be(150);
+        }
+
+        [Fact]
+        public void NbJourTraitement_Shoul_Be_Return_Cout_Total_Traitement_ByPatient()
+        {
+            _TraitementService.AddTraitement(traitement);
+            var result = _TraitementService.NbJourTraitement(patient);
+            result.Should().Be(3);
         }
 
         [Fact]

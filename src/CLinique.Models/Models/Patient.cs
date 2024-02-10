@@ -10,8 +10,8 @@ namespace CLinique.Models.Models
     {
         public string? NomPathologie { get; set; } 
         public virtual Medecin? Medecin { get; set; }
+        public virtual Maladie Maladie { get; set; }
         public int MaladieId { get; set; }
-        public Maladie Maladie { get; set; }
 
     }
 }

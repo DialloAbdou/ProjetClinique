@@ -11,18 +11,18 @@ namespace Clinique.Services.Implementations
 {
     public class TraitementService : ITraitementService
     {
-        List<Traitement> _Listtraitements = new List<Traitement>();
+        List<Traitement> _Listraitements = new List<Traitement>();
         public IEnumerable<Traitement> GetAllTraitements()
         {
-             return _Listtraitements.AsEnumerable();
+            return _Listraitements.AsEnumerable();
         }
         public bool IsExistedTraitement(Traitement tradement)
         {
-           return _Listtraitements.Any(t=>t.Id == tradement.Id);
+            return _Listraitements.Any(t => t.Id == tradement.Id);
         }
         public void AddTraitement(Traitement tritement)
         {
-            _Listtraitements.Add(tritement);
+            _Listraitements.Add(tritement);
         }
 
         /// <summary>
@@ -34,30 +34,53 @@ namespace Clinique.Services.Implementations
         /// <exception cref="NotImplementedException"></exception>
         public decimal CoutTraitement(Patient patient)
         {
-            decimal coutTraitement = 0;
-            if(IsTrouveTraitementPatient(patient))
+            var TraitemntPatients = _Listraitements.FirstOrDefault(t => t.MaladieId == patient.MaladieId);
+            var soins = TraitemntPatients!.Soins.ToList();
+            decimal result = 0;
+            foreach (var s in soins)
             {
-                //
+                result += s.Cout;
             }
-            return  150;
-           
+            return result;
+
         }
 
-
+        /// <summary>
+        /// cette fonction permet de 
+        /// </summary>
+        /// <param name="patient"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public int NbJourTraitement(Patient patient)
         {
-            throw new NotImplementedException();
-        }
 
+            var TraitemntPatients = _Listraitements.FirstOrDefault(t => t.MaladieId == patient.MaladieId);
+            var soins = TraitemntPatients!.Soins.ToList();
+            int result = 0;
+            foreach (var s in soins)
+            {
+                result += s.NbJour;
+            }
+            return result;
+
+        }
+        /// <summary>
+        /// elle renvoie vrai s'elle trouve le
+        /// vrai traitement du patient correspondant
+        /// </summary>
+        /// <param name="patient"></param>
+        /// <returns></returns>
         public bool IsTrouveTraitementPatient(Patient patient)
         {
-            return   _Listtraitements.All(t => t.Maladie.Id == patient.MaladieId);
+            var result = _Listraitements.All(t => t.MaladieId == patient.MaladieId);
+
+            return result;
         }
 
         public Traitement GetTraitementByPatient(Patient patient)
         {
-            return _Listtraitements.Find(t => t.MaladieId == patient.MaladieId);
-            
+            return _Listraitements.Find(t => t.MaladieId == patient.MaladieId);
+
         }
     }
 }
