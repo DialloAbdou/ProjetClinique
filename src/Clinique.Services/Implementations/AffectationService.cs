@@ -44,7 +44,7 @@ namespace Clinique.Services.Implementations
             var medecin1 = ListMedecins.FirstOrDefault(m => m.Id == medecin.Id);
             if (medecin1 != null)
             {
-                if (medecin.Patients.Count <= 6)
+                if (medecin.Patients!.Count <= 6)
                 {
                     return true;
                 }else
