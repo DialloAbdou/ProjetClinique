@@ -9,7 +9,6 @@ namespace Clinique.Data.Abstractions
 {
     public interface IAdmissionRepository
     {
-        Task AjoutAdmission(Patient patient, string nomPathologie);
-       Task< bool> isAddmissionPossible();
+        Task AjoutAdmission(Admission admission);
     }
 }

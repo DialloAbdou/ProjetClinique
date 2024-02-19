@@ -7,6 +7,7 @@ namespace Clinique.Data
     {
         public DbSet<Patient> Patients{ get; set; }
         public DbSet<Medecin> Medecins { get; set; }
+        public DbSet<Admission> Admissions { get; set; }
 
         public CliniqueDbContext(DbContextOptions<CliniqueDbContext>options):base(options)
         {

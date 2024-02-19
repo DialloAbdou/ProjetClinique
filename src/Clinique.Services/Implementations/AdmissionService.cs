@@ -14,7 +14,6 @@ namespace Clinique.Services.Implementations
         private const int MAX = 10;
         private List<Admission> Listadmissions = new List<Admission>();
 
-
         public IEnumerable<Admission> GetAllAdmission()
         {
             return Listadmissions.AsEnumerable();
