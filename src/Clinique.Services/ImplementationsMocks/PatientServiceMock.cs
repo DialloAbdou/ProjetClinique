@@ -1,4 +1,5 @@
 ﻿using Clinique.Data.Abstractions;
+using Clinique.Data.Implementations;
 using Clinique.Services.Abstracts;
 using Clinique.Services.AbstractsMock;
 using CLinique.Models.Models;
@@ -17,21 +18,21 @@ namespace Clinique.Services.ImplementationsMocks
         {
             _patientRepository = patientRepository;
         }
+
+        public async Task<Patient> AddPatient(Patient patient)
+        {
+            return  await _patientRepository.AddAsync(patient);
+           
+        }
+
         public async Task<IEnumerable<Patient>> GetAllPatients()
         {
             return await _patientRepository.GetAllAsync();
         }
 
-        public Task AddPatient(Patient patient)
+        public async Task<bool> IsExistPatient(Patient patient)
         {
-            throw new NotImplementedException();
-        }
-
-    
-
-        public Task<bool> IsNotExistPatient(Patient patient)
-        {
-            throw new NotImplementedException();
+            return await _patientRepository.IsExistedAsync(p=>p.Id == patient.Id);  
         }
     }
 }

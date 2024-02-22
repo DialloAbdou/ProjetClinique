@@ -27,20 +27,14 @@ namespace Clinique.Data.Implementations
         public  async Task<T> AddAsync(T person)
         {
             await dbContext.Set<T>().AddAsync(person);
+            await dbContext.SaveChangesAsync();
             return person;
            
-        }
-
-        public async Task<bool> IsExisted(T person)
-        {
-            return await dbContext.Set<T>().AnyAsync();
         }
 
         public async Task<bool> IsExistedAsync(Expression<Func<T, bool>> predicate)
         {
             return await dbContext.Set<T>().AnyAsync(predicate);
         }
-
-       
     }
 }
