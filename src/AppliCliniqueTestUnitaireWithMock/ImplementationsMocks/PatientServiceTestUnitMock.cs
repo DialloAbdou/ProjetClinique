@@ -78,6 +78,8 @@ namespace AppliCliniqueTestUnitaireWithMock.ImplementationsMocks
             _patientRepositoryMock.Setup(p => p.IsExistPatient(It.IsAny<int>())).ReturnsAsync(true);
 
             var result = await _patientServiceMock.IsExistPatient(It.IsAny<int>());
+
+            result.Should().BeTrue();
        
         }
 
