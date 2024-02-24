@@ -30,9 +30,9 @@ namespace Clinique.Services.ImplementationsMocks
             return await _patientRepository.GetAllAsync();
         }
 
-        public async Task<bool> IsExistPatient(Patient patient)
+        public async Task<bool> IsExistPatient(int id)
         {
-            return await _patientRepository.IsExistedAsync(p=>p.Id == patient.Id);  
+            return await _patientRepository.IsExistPatient(id);
         }
     }
 }

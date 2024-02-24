@@ -11,7 +11,7 @@ namespace Clinique.Services.AbstractsMock
     {
         Task<Patient> AddPatient(Patient patient);
         Task<IEnumerable<Patient>> GetAllPatients();
-        Task<bool> IsExistPatient(Patient patient);
+        Task<bool> IsExistPatient(int id);
 
     }
 }

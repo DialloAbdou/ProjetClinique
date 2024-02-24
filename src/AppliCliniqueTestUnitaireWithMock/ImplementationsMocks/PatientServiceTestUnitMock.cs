@@ -49,17 +49,38 @@ namespace AppliCliniqueTestUnitaireWithMock.ImplementationsMocks
             _patientRepositoryMock
                 .Setup(p => p.AddAsync(It.IsAny<Patient>()))
                 .Callback((Patient patient) => p = patient);
-            var patient =   await _patientServiceMock.AddPatient(new Patient { Nom = "Nom1", Prenom = "Prenom1", Adresse = "Adresse1" });
+            var patient = await _patientServiceMock.AddPatient(new Patient { Nom = "Nom1", Prenom = "Prenom1", Adresse = "Adresse1" });
             p.Should().NotBeNull();
             p.Nom.Should().Be("Nom1");
             p.Prenom.Should().Be("Prenom1");
             p.Adresse.Should().Be("Adresse1");
 
-            _patientRepositoryMock.Verify(m=>m.AddAsync(It.Is<Patient>(p=>p.Nom =="Nom1" && p.Prenom=="Prenom1")));
+            _patientRepositoryMock.Verify(m => m.AddAsync(It.Is<Patient>(p => p.Nom == "Nom1" && p.Prenom == "Prenom1")));
 
         }
 
-        
+        [Fact]
+        public async Task AddPatient_Should_Be_Return_True_When_Found_patient()
+        {
+            Patient p = null;
+
+            _patientRepositoryMock
+                .Setup(p => p.AddAsync(It.IsAny<Patient>()))
+                .Callback((Patient patient) => p = patient);
+            var patient = await _patientServiceMock.AddPatient(new Patient { Nom = "Nom1", Prenom = "Prenom1", Adresse = "Adresse1" });
+
+        }
+
+        [Fact]
+        public async Task IsExistPatien_Should_Be_Return_True_When_Found_patient()
+        {
+          
+            _patientRepositoryMock.Setup(p => p.IsExistPatient(It.IsAny<int>())).ReturnsAsync(true);
+
+            var result = await _patientServiceMock.IsExistPatient(It.IsAny<int>());
+       
+        }
+
 
     }
 }

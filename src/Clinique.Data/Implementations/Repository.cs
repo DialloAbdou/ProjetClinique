@@ -32,9 +32,6 @@ namespace Clinique.Data.Implementations
            
         }
 
-        public async Task<bool> IsExistedAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await dbContext.Set<T>().AnyAsync(predicate);
-        }
+   
     }
 }

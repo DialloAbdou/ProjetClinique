@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using CLinique.Models.Models;
+using System.Linq.Expressions;
 
 namespace Clinique.Data.Abstractions
 {
@@ -6,7 +7,7 @@ namespace Clinique.Data.Abstractions
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> AddAsync(T person);
-        Task<bool> IsExistedAsync(Expression<Func<T, bool>> predicate);
+ 
         
     }
 }

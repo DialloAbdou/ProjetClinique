@@ -12,6 +12,9 @@ namespace Clinique.Data.Implementations
         {
         }
 
-
+        public async Task<bool> IsExistPatient(int id)
+        {
+           return await dbContext.Patients.AnyAsync(p => p.Id == id);
+        }
     }
 }
